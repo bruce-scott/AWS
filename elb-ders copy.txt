@@ -1,0 +1,88 @@
+——————————————
+
+#Create 2 default NGINEX Instance via Userdata
+
+
+#!/bin/bash
+
+yum update -y
+amazon-linux-extras install nginx1.12 -y
+chkconfig nginx on 
+service nginx start 
+
+------------
+#Customize the Instance 1
+ 
+
+cd  /usr/share/nginx/html
+Ls
+sudo nano /usr/share/nginx/html/index.html
+# write server 1
+“Ctrl+X”   “Y”  “Enter”
+
+
+--------------------
+#Customize the Instance 2
+ 
+
+cd  /usr/share/nginx/html
+Ls
+sudo nano /usr/share/nginx/html/index.html
+# write server 2
+“Ctrl+X”   “Y”  “Enter”
+
+---------------------
+
+Click Create Load balancer
+
+Choose application loads balancer
+
+Step 1 - Configure Load Balancer:
+
+  - Name: We write the name of LB as First-LB.
+
+  - Scheme: Internet-facing, 
+
+  - IP address Type: Ipv4. 
+
+  - Listener: HTTP 80 port
+
+  Availability Zone(AZ): In this section, we can specify the Availability Zones to enable our load balancer. AWS suggests we specify subnets from at least two Availability Zones to improve the availability of your load balancer. We select default VPC and all the AZ options.
+
+  Tag:You can enter a tag if you want.
+
+Step 2 - Configure Security Settings : Click Next
+
+Step 3 - Configure Security Groups: Select HTTP
+
+Step-4 - Configure Routing
+
+  - Target group: create a new one.
+
+  - Name: First-target.
+
+  - Target Type: We have 3 options, Instance, IP and Lambda function. Choose Instance
+
+  - Protocol and Port: HTTP 80
+
+  - Health Checks:
+
+    --Protocol: Select HTTP
+
+    --Path: The default "/" sign available for us.Advanced Health Check Settings
+
+  - Advanced Health Checking Health Checks:
+
+     --Port: Keep it as is.
+
+     --Healthy Threshold: 3
+
+     --Unhealthy Threshold:2
+
+     --Timeout:5
+
+     --Interval: 30 seconds is the default value and available for us.
+
+     --Success Codes:Leave it as is.
+
+ - Step 5 - Register Targetsvia clicking ""Add registered" tab.

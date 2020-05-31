@@ -1,0 +1,74 @@
+sudo
+DEFAULT NGINEX YUKLEME
+——————————————————————————
+sudo su
+yum update -y
+amazon-linux-extras install nginx1.12 -y
+chkconfig nginx on 
+service nginx start 
+
+
+MANUEL OLARAK NGINEX DEFAULT SAYFASINI DÜZENLEME
+—————————
+
+(sudo su)
+
+cd  /usr/share/nginx/html
+ls
+nano /usr/share/nginx/html/index.html
+“Ctrl+X”   “Y”  “Enter”
+service nginx restart 
+———————————————————————
+
+MANUEL OLARAK NGINEX DEFAULT SAYFASINI DÜZENLEME-GITHUB
+
+
+(sudo su)
+
+yum update -y
+amazon-linux-extras install nginx1.12
+yum install -y wget
+chkconfig nginx on 
+cd /usr/share/nginx/html
+ls
+rm index.html
+wget https://raw.githubusercontent.com/awsdevopsteam/ngniex/master/index.html
+wget https://raw.githubusercontent.com/awsdevopsteam/ngniex/master/Picture1.png
+service nginx start 
+——————————————————————————————————
+
+USER DATA KISMINI KULLANARAK KİŞİSELLEŞTİRİLMİŞ NGINEX YÜKLEMEK
+
+
+#!/bin/bash
+yum update -y
+amazon-linux-extras install nginx1.12
+yum install -y wget
+chkconfig nginx on 
+cd /usr/share/nginx/html
+ls
+chmod o+w /usr/share/nginx/html
+rm index.html
+wget https://raw.githubusercontent.com/awsdevopsteam/ngniex/master/index.html
+wget https://raw.githubusercontent.com/awsdevopsteam/ngniex/master/Picture1.png
+sudo service nginx start  
+
+
+——————————————
+
+USER DATA KISMINI KULLANARAK SADECE DEFAULT NGINEX YÜKLEMEK
+
+#!/bin/bash
+yum update -y
+amazon-linux-extras install nginx1.12 -y
+chkconfig nginx on 
+service nginx start 
+
+
+
+
+
+
+
+
+
