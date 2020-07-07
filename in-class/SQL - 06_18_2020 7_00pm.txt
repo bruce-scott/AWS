@@ -1,0 +1,33 @@
+SQL - 06/18/2020 7:00pm
+
+#Write a query that returns employee_name and his/her department_name
+SELECT e.first_name, d.department_name FROM employees e 
+LEFT JOIN departments d ON e.department_id = d.department_id;
+
+#Write a query that returns employee_name and his/her manager
+select e.first_name as employee, m.first_name as manager from employees e 
+join employees m on e.manager_id=m.employee_id;
+
+#Write a query that returns employee_name, department_name and city
+SELECT e.first_name as employee_name, d.department_name, l.city FROM employees e 
+INNER JOIN departments d ON e.department_id = d.department_id 
+INNER JOIN locations l ON d.location_id = l.location_id;
+
+#Write a query that returns department_name and city
+select d.department_name, l.city from departments as d 
+join locations as l on d.location_id = l.location_id;
+
+#Write a query that returns employee name and department_name 
+SELECT e.first_name as employee_name, d.department_name FROM employees e 
+INNER JOIN departments d ON e.department_id = d.department_id; 
+
+#Write a query that returns employee names who works in Seatle
+SELECT e.first_name as employee_name FROM employees e 
+INNER JOIN departments d ON e.department_id = d.department_id 
+INNER JOIN locations l ON d.location_id = l.location_id where l.city='Seattle';
+
+#Write a query that returns employee name, dependent name and department name who has dependents.
+SELECT e.first_name as 'Employee Name', c.first_name as dependent, d.department_name as department 
+FROM employees e 
+INNER JOIN departments d ON e.department_id = d.department_id 
+INNER JOIN dependents c ON e.employee_id=c.employee_id ;

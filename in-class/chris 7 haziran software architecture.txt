@@ -1,0 +1,128 @@
+modules are not deployable
+büyük parçaları küçük parçalara ayırmak istediğinizde kullamırsınız
+çok büyük repositoryler varsa bunları modüllere ayırmazsan
+çok zorlanırsın
+
+SOFTWARE ARCHITECTURE
+Fundamental organization of a system
+
+neden önemli
+software sisteminin temeli
+anlamayı kolaylaştırır
+software modelini ve nasıl çalışacağını belirlerbir kere uygulandığında
+değişmesi zor olan pahalı olanlar kararlar serisi
+
+Decision
+
+architect'ten beklenen takıma kararlarıyla rehberlik etmesi. Tabi bütçe
+sınırlaması önemli
+mimari çok önemli. Eğer bu aşamalarda büyük hatalar yapılırsa büyük
+sıkıntılara sebep olabilir. Projenin iptaline bile sebep olabilir
+level 1, 2, 3 hep mimarinin işi, mühendisin işi level 4'te başlıyor.
+Code level.
+bu nedenle architecture (mimari) çok önemli
+
+mimari ve dizayn kıyaslaması
+architet---characteristics, style, component structure
+
+developer---class design, user interface, source code
+
+software requirements tipleri
+business--high level business goals of organization
+mutlaka çalıştığın yerde doğru soruları sormayı öğrenmen gerek
+functional--yazılımın fonksiyonelliğini tasvir eder
+non-functional-- çözümün efektif olması için gerekenler
+constraints--yasaklamalar, engeller
+
+software quality attributes
+maintainability
+usability
+availability
+portability
+testability
+interoperability
+
+Distributed Application Models
+client-server
+P2P
+Master-Slave
+
+CLIENT-SERVER
+hergün kullanıyoruz. telefonla bigisayarla internete bağlandığımızda
+bunu kullanıyoruz.
+örnek; banka hesabı açmak
+
+peer to peer (p2p)
+görevleri peerler arasında dağıtan sistem
+her bilgisyarın görevi ve kapasitesi aynı
+server'a ihtiyacı yok
+network manager'a ihtiyacı yok
+kullanıcının fazla teknik bilgi bilmesine gerek yok
+daha az traffic
+kolay kurulum
+central backup yok
+bilgisayaralar birbirine bağlı olduğu için yavaşlar
+güvenlik yok
+dosyaslara yer bulmak zor
+örnek: zoom, whatsapp, google due, facetime, slack
+sadece server'da accountlar var. içerikler server'da saklanmıyor
+
+MASTER-SLAVE
+bir cihazın başka cihazlar üzerinde kontrolü
+orkestra şefi gibi
+her bileşenin farklı görevi var
+bileşenler identical
+
+Software Architecture Tipleri
+1. Monolithic
+1 tire and all components composed in that tire
+cep telefonu
+basit
+basit hata tespiti
+easy to deploy
+geliştirmek kolay
+
+büyük kodlar anlaşılmaz
+uygulama arttıkça yavaşlar
+sürekli gelişim zor
+scale zor
+overloaded web-container bu nedenle başlama süresi uzar
+
+2. service-oriented architecture (SOA)
+servislerin aplikasyon bileşenleri tarafından diğer bileşenlere
+sağlandığı bir patern.
+tekrar kullanılabilir kod
+scalability
+cost azalır
+kolay temin
+müsaitlik
+güvenilirlik
+
+örnek hava durumu sitesi
+
+3. microservice architecture
+küçük, self kontrollü, bağımsız servislerden oluşur.
+amazon gibi
+anahtar konseptleri
+- küçük, odaklanmış servisler,
+- mükemmel beirlrnmiş servis arayüzleri
+- bağımsız veri depolama
+- autonomus and independantly deployable servisler (otonom ve bağımsız
+konuşlanabilir servisler)
+
+farklı teknolojiler kullanılabilir
+bağımsız konuşlanabilir birimleri destekler
+yazılım frequently olarak yayınlanır
+uygun maliyet
+güvenli
+birçok servis
+
+gecikme fazla
+konfigürasyon için ekstar effor
+transaction güvenliğini sağlamak zor
+data kaydı tutmak zor
+kodu bir servisten diğerine taşımak zor
+
+örnek UBER
+
+

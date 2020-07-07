@@ -1,0 +1,3 @@
+opreating system web server database programming language
+LAMP
+Linux apache server mysql php + word press

@@ -1,0 +1,70 @@
+-------------------------
+#İki bucketı senkronize etme
+
+aws s3 sync s3://bucketname/ s3://bucketname/
+
+---------------------------
+#local bilgisayarla aws bucket ı sekronize etme
+
+aws s3 sync a/ s3://bucketname/
+
+-------------------------------------
+#diğer bir aws user'ı configure etme
+
+aws configure --profile otheruser
+---------------------------------
+
+#home directory'de 5mb lik bir dosya oluşturma ve bunu s3 te bir bucket a kopyalama 
+
+
+mkfile -n 5M 5mg.data 
+aws s3 cp 5mg.data s3://bucketname
+----------------------------------
+
+
+#Static web hosting Policy:  
+
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "PublicReadGetObject",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::bucket-name/*"
+        }
+    ]
+}
+
+--------------------
+
+
+#S3'te  bulunan bir bucket tan dosya çekerek bir web site yapma-user data ile
+
+#!/bin/bash
+
+yum update -y
+yum install -y httpd
+chkconfig httpd on
+cd /var/www/html
+aws s3 cp s3://awsdevopsteam.com/index.html .
+aws s3 cp s3://awsdevopsteam.com/ryu.jpg .
+service httpd start
+
+
+------------------------
+
+#Githubdan Çekilen versiyon
+
+#!/bin/bash
+
+yum update -y
+yum install -y httpd
+yum install -y wget
+chkconfig httpd on
+cd /var/www/html
+wget https://raw.githubusercontent.com/awsdevopsteam/route-53-2/master/index.html
+wget https://raw.githubusercontent.com/awsdevopsteam/route-53-2/master/ryu.jpg
+service httpd start

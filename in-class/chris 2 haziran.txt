@@ -1,0 +1,88 @@
+Databases
+
+kişiden bilgi aldığını varsay bu bilgileri kaydetmen
+gereken bir yer lazım
+öncelikle bir seperatöre ihtiyacın var.
+database'de ayrı ayrı yazdığın her yere column (sütun) denir.
+herşeyi users.csv'ye yazarsın. (csv:comma seperator value)
+Eğer database yoksa tek tek bilgilerini kontrol etmen gerekir. Database kavramı
+yokken bütün developmentlar böyle yapıyordu. ancak bu yavaş yöntemdi.
+ayrıca çok fazla dosya olduğu için çok yer kaplıyordu. data base fikri
+böyle doğdu.
+
+database tipleri
+relational-----sql---structured qery language
+nonrelational---nosql---too slow--not only sql
+
+sql--table based, predefinded schema(şemada neler olacağı,
+hangi sutünlar olacağı önceden belli. buna göre roller
+belirleyebilirsin), vertically scalable( aynı instance'ın kapasitesini
+arttırabilirsin. 4 gb'ı 8'e çıkarabilirsin), join fonksiyonuna uygun
+(farklı iki tabloyu  birleştirebilir. kombine edebilir)
+for advanced complex queries
+
+
+nosql--document based, key-value pairs, graph databases, dynamic schema
+horizantally scalable (4 gb diskin var 8 gb lazımsa başka
+instance kullanman lazım, senkronizasyon için gecikme olabilir.
+farklı regionlar kullanman gerekebilir.), used for simple queries
+join fonksiyonuna uygun değil.
+
+relational---amazon rds
+nonrelational---amazon dynamoDB
+
+AMAZON RDS
+mazon'un sql database opsiyonu
+aws tarafından kontrol edilir.
+bileşenleri---database engines (software), db instance, storage disk
+
+databases engines
+6 tane var. oracle, microsoft sql, mysql, postgresql, mariadb,
+amazon aurora (mysql'den 5 kat daha iyi ve 10'a biri kadar ucuz)
+
+devops engineer tek başına oracle'ı yönetemez. bunun için ona
+tahsisli biri olması lazım. bankalar büyük firmalar oracle tercih
+eder. özel donanımları var. milyonlarca satırdan oluşan kodlar
+kullanıyorsan oracle tercih edersin. pahalı.
+
+database instance
+
+ec2 instance gibi. aynı konsept. start ve stop'u var ancak stop'ta
+7 gün kalıyor. sonra terminate ediyor. kalıcı olmasını istiyorsan
+snapshot'ını alman lazım. sonra da terminate etmen lazım.
+
+instance storage
+general purpose--SSD--uygun maliyet
+provisioned IOPs-SSD--çok hızlı. çok fazla veri depoluyorsan buna 
+ihtiyacın olur.- dayanıklı
+magnetic storage-- tavsiye edilmez
+
+MySQL Workbench
+
+database'i modifiye ve monite etmeye yarar kısaca yönetmeye yarar.
+
+DB Instance Backup
+çok önemli backup alma. günlük backup almak zorunlu. otomatik backup
+alınıp s3'de saklanır. eğer bir sorun varsa alacağınız datada önce
+manuel backup alıp sonra database'e atabilirsin. bunu da snapshot'la
+yapabilirsin. bunu yapmazsan bilgileri kaybedebilirsin.
+
+backup windows
+backuplar belirli periyodlarla alınabilir buna backup windows denir.
+bunun sayesinde 35 gün geriye kadar gidebiliriz. sistem restorasyonları
+mevcut db üzerinde yapılmıyor. yeni bir db instance yapılıyor.
+
+db instance snapshot
+user-initiated
+sonra otomatize edbilirsin.
+db silinirse backup da silinir. kalıcı backup istiyorsan snap alman lazım
+
+read replicas
+for reading process
+serve read traffic
+db'nin performansını arttırır
+
+
+
+
+

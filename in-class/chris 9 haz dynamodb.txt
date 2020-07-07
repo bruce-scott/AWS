@@ -1,0 +1,56 @@
+dynamodb
+-------------------------
+fully managed. herşeyi aws yapıyor
+nosql
+flexible tables
+join fonksiyonu yok
+--------------------------
+table--collection of data
+her tablo itemlardan oluşur
+itemların spesifik özellikleri attribute
+rdsin aksine her itema farklı attributeler verebilirsin
+anahtar değer id-number diğerleri fasa fiso
+--------------------------
+her itemı belirlemek için primary key kullanır
+bu zorunlu
+iki tip var
+-- partition key
+-- partition key and sort key
+
+itemlar 10 gblık depolama ünitelerine ayrılmıştır bu nedenle
+partition keye ihtiyaç var
+10 gblık depolara partition denir
+bu şekilde yapılmasının nedeni çok büyük verilerin saklanmasının
+zor olması
+eğer keyler iyi belirlenmezse kayıtlara ulaşma süren uzar bu da failurea
+neden olur. unique key kullanman lazım aksi takdirde benzer keyler
+kullananlar varsa karışoıklığa sebep olur
+datayı query yapmak için zaman limitleri var uniq key olmazsa
+bu zamanı aşarsın ve cost artar
+-----------------------------
+high cardinality attributes kullan
+-- e-mailid, employee_no
+composid attributes kullan
+-- invicenumber+randomsuffix
+
+https://aws.amazon.com/tr/blogs/database/choosing-the-right-dynamodb-partition-key/#:~:text=DynamoDB%20supports%20two%20types%20of,columns%20in%20other%20database%20systems.&text=The%20first%20attribute%20is%20the,attribute%20is%20the%20sort%20key
+-------------------------------
+https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/SampleData.CreateTables.html
+
+farklı itemlara aynı partition key oluşturamazsın
+aws dynamodb batch-write-item --request-items file://ProductCatalog.json
+https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GettingStarted.Python.03.html
+To load the ProductCatalog table with data, enter the following command.
+aws dynamodb batch-write-item --request-items file://ProductCatalog.json
+To load the Forum table with data, enter the following command.
+aws dynamodb batch-write-item --request-items file://Forum.json
+To load the Thread table with data, enter the following command.
+aws dynamodb batch-write-item --request-items file://Thread.json
+To load the Reply table with data, enter the following command.
+aws dynamodb batch-write-item --request-items file://Reply.json
+
+https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/SampleData.LoadData.html
+https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/SampleData.CreateTables.html
+
+
+Amazon DynamoDB#DynamoDB Thread 1
