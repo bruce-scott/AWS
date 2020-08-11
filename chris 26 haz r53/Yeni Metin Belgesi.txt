@@ -1,0 +1,28 @@
+# S3 Bucket
+- Bucket-1
+    - create bucket example.com
+    - allow public access
+    - configure web site hosting
+    - add bucket policy
+    - upload index.html & image
+- Bucket-2
+    - create bucket www.example.com
+    - allow public access
+    - configure website hosting redirect to example.com
+- RecordSet-1
+    - create A RecordSet
+    - name example.com
+    - alias yes
+    - select s3 resource
+- RecordSet-2
+    - create A RecordSet
+    - name www.example.com
+    - alias yes
+    - select s3 resource
+# Standalone Server
+# ELB Autoscaling
+# Project Structure
+src/index.html, ken.jpg
+template.json/yaml
+deploy.sh
+cleanup.sh
